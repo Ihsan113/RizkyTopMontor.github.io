@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <link rel="icon" type="image/png" href="favicon32x32.png">
+</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengkel Rizky Top Motor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #222);
+            color: #fff;
+            line-height: 1.6;
+     
+            margin: 0;
+        }
+
+      header {
+    background-color: #000000;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    
+}
+
+
+   
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin-top: 50%;
+    z-index: 6;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.7rem;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: -100%;
+        left: 0;        
+        padding: 20px;
+        
+        transition: top 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        display: flex;
+         
+        top: 60px; /* Adjust this value based on header height */
+    }
+
+   
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+    color: #e7d4ad;
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+    margin-left: 29px;
+    margin-top: -20px;
+    
+}
+
+.hamburger:hover {
+    transform: scale(1.2);
+}
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 5;
+        transition: opacity 0.3s ease;
+    }
+
+    .overlay.active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+
+     .logo img {
+    width: 100px; /* Lebar gambar logo */
+    height: 100px; /* Tinggi gambar logo */
+    margin-right: 10px;
+    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Bayangan halus */
+}
+
+h1 {
+    font-size: 1.5rem; /* Ukuran font yang lebih besar */
+    margin: 10px 0; /* Ruang di atas dan di bawah teks */
+    font-weight: bold; /* Tebal */
+    color: #ffc880; /* Warna teks utama */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Bayangan teks */
+    
+    
+}
+
+
+       /* Banner Section */
+.banner {
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCEk3gY2YMdJEuJGcavhOaMNNk3nOfwQbb_Q&usqp=CAU') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.banner::before, .banner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px; /* Tinggi efek blur */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Gradien dari hitam ke transparan */
+    z-index: 1;
+}
+
+.banner::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent); /* Gradien dari hitam ke transparan */
+    box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.7); /* Bayangan hitam */
+}
+
+.banner::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Gradien dari hitam ke transparan */
+    box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.7); /* Bayangan hitam */
+}
+
+.banner-text {
+    position: relative;
+    z-index: 2; /* Supaya teks di atas efek blur */
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: #f0a500; /* Warna utama teks */
+    
+    /* Efek 3D menggunakan transform */
+    transform: perspective(100px) rotateX(5deg) translateY(-65px);
+
+    /* Animasi warna menyala */
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        color: #f0a500; /* Warna awal */
+        text-shadow: none; /* Tidak ada bayangan teks */
+    }
+    100% {
+        color: #ffcc00; /* Warna yang lebih terang */
+        text-shadow: 0 0 20px #ffcc00; /* Bayangan teks */
+    }
+}
+
+       
+
+        .slogan {
+            margin-top: 10px;   
+            margin-bottom: 10px;       
+            font-size: 1.5rem;
+            color: #f0a500; /* Warna kuning emas */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap; /* Memastikan teks tidak pindah baris */
+        }
+
+        .slogan-text {
+            display: inline-block;
+            animation: slide-in 1s linear; /* Animasi dari kiri ke kanan selama 2 detik */
+            font-size: 1.2rem; /* Ukuran teks sedikit lebih besar */
+            font-weight: bold; /* Tebal */
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0%);
+            }
+        }
+
+        .scroll-down {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .scroll-down.show {
+            opacity: 1;
+        }
+
+        .scroll-down i {
+            font-size: 1.5rem;
+            color: #f0a500; /* Warna kuning emas */
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        main {
+            padding: 15px;
+            margin-bottom: 5px;
+        }
+
+        .services, .contact {
+            background-color: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .services.show, .contact.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f0a500; /* Warna kuning emas */
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        ul li .icon {
+            margin-right: 10px;
+            color: #f0a500; /* Warna kuning emas untuk ikon */
+        }
+
+        .testimonial-slider {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            display: none;
+            padding: 20px;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-author {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .testimonial-slider-nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .testimonial-slider-nav button {
+            background-color: #f0a500; /* Warna kuning emas */
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .testimonial-slider-nav button:hover {
+            background-color: #e09200; /* Warna kuning emas sedikit lebih gelap */
+        }
+
+       footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        footer .links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 28px;
+        }
+        footer p {
+            margin: 0;
+        }
+        
+        
+        .loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Latar belakang hitam transparan */
+    
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Z-index tinggi untuk tampil di atas semua elemen */
+    opacity: 1;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out; /* Animasi opacity */
+}
+
+.loader-container.hidden {
+    opacity: 0;
+    pointer-events: none; /* Tidak menerima klik saat tersembunyi */
+}
+
+.engine-container {
+    position: relative;
+    width: 80px;
+    height: 120px; /* Menyesuaikan tinggi untuk memuat teks di bawah logo */
+    margin: 0 auto;
+    display: flex;
+    margin-top: 70%;
+    flex-direction: column;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+.engine {
+    width: 70px;
+    height: 70px;
+    background: url('img/Giphy.gif') no-repeat center center;
+    background-size: contain;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(240, 165, 0, 0.7);
+    animation: rotate 8s linear infinite;
+}
+
+    .text {
+            margin-top: 2px;
+            font-size: 1.2rem;
+            
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.card-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1 bagian untuk card, 2 bagian untuk deskripsi */
+    grid-column-gap: 20px; /* Jarak antara card dan deskripsi */
+}
+
+.card {
+    width: 200px;
+    height: 290px;
+    background-color: #242124;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.card h3 {
+    color: #ffd26a;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.moving-image {
+    width: 150px;
+    height: 145px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+    transform: rotateY(10deg);
+    animation: moveUpDown 1s ease-in-out infinite alternate;
+}
+
+.moving-image img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.card-description {
+    color: #ccc;
+    font-size: 0.9rem;
+    padding: 5px;
+    border-left: 1px solid #666; /* Garis pemisah antara card dan deskripsi */
+}
+
+.card-description p {
+    margin-bottom: 0px;
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+
+
+  
+.operation-hours {
+    background-color: #333;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+.operation-hours h2 {
+    color: #f0a500;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.operation-hours table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.operation-hours th, .operation-hours td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+}
+
+.operation-hours th {
+    background-color: #555;
+    color: #fff;
+}
+
+.operation-hours tr:nth-child(even) {
+    background-color: #444;
+}
+
+
+
+
+.about-section {
+    background: linear-gradient(135deg, #1e1e1e, #ff9a00); 
+    color: #fff;
+    padding: 5px 20px;    
+    text-align: center;    
+    border-radius: 12px;
+    animation: moveUpDown 2s infinite alternate;
+}
+
+.about-section2 {
+    margin-bottom: 170px;
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.about-section h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: -120px;
+}
+
+.about-card {
+    background: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    margin-top: 25px;
+    text-align: center;
+    /* Efek 3D menggunakan transform */
+    transform: perspective(100px) rotateX(-1deg) translateY(-155px);
+}
+
+.about-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.about-card h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+}
+
+.about-card p {
+    font-size: 1em;
+    line-height: 1.5;
+    
+}
+
+.contact-form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.contact-form h2 {
+    font-size: 1.5rem;
+    color: #f0a500; /* Warna kuning emas */
+    margin-bottom: 10px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #666;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #f0a500; /* Warna kuning emas */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #e09200; /* Warna kuning emas sedikit lebih gelap */
+}
+
+
+
+        @media (max-width: 768px) {
+            .about-card {
+                max-width: 100%;
+            }
+        }
+        
+        
+         .services-section {
+            background: #171a1f;
+            color: #333;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .services-section h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .services-slider {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        .service-card img {
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+        }
+        .service-card h3 {
+            margin: 15px 0;
+            font-size: 1.0em;
+        }
+        
+       
+        
+        
+        .service-card p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .service-card {
+                max-width: 100%;
+            }
+        }
+        
+      
+
+    </style>
+</head>
+
+   
+  
+   
+<body>
+    <header>
+    <div class="logo">
+        <img src="img/Logo.png" alt="Bengkel Rizky Top Motor">
+    </div>
+    <h1><i>Bengkel Rizky Top Motor</i></h1>
+    <nav>
+        
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+           
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+
+
+ <div class="loader-container" id="loader">
+        <div class="engine-container">
+            <div class="engine"></div>
+        </div>
+        <div class="text">Loading Engine... <i class="fas fa-cog fa-spin"></i></div>
+    </div>
+
+
+
+<div class="overlay"></div>
+
+    <div class="banner">
+        <div class="banner-text">Welcome to Bengkel Rizky Top Motor</div>
+    </div>
+
+    <main>
+        <div class="slogan">
+            <span class="slogan-text"><i>Kami Siap Melayani Anda !!</i></span>
+        </div>
+ <div id="services">
+        <section class="services">
+            <h2>"Our Services</h2>
+            <ul>
+                <li><i class="icon fas fa-tools"></i> Engine Repair</li>
+                <li><i class="icon fas fa-cogs"></i> Transmission Service</li>
+                <li><i class="icon fas fa-oil-can"></i> Oil Change</li>
+                <!-- Add more services -->
+            </ul>
+        </section>
+        </div>
+<hr>
+<br>
+<div class="card-container">
+    <div class="card">
+        <h3>1.Perbaiki Mesin</h3>
+        <div class="moving-image">
+            <img src="img/Gambar1.png" alt="Animated Engine Image">
+        </div>
+        <p>service injeksi segala motor</p>
+    </div>
+    <div class="card-description">
+        <p>"Kami menyediakan layanan perbaikan mesin yang mencakup segala jenis motor. Kami siap memberikan pelayanan cepat dan profesional untuk memastikan kendaraan Anda kembali dalam kondisi optimal."</p>
+       
+    </div>
+</div>
+<br>
+<hr>
+<br>
+<div class="card-container">
+    <div class="card">
+        <h3>2.Repaint</h3>
+        <div class="moving-image">
+            <img src="img/Gambar2.png" alt="Animated Engine Image">
+        </div>
+        <p>Repaint Kendaraan.</p>
+    </div>
+    <div class="card-description">
+        <p>"Kami menawarkan layanan pengecatan kendaraan yang berkualitas tinggi untuk mempercantik tampilan kendaraan Anda. Percayakan kendaraan Anda kepada kami untuk hasil yang memuaskan dan tahan lama."</p>
+       
+    </div>
+</div>
+<br>
+<h3>Dan masih banyak lainnya:</h3>
+   
+
+        <section class="testimonial-slider">
+            <div class="testimonial-slide active">
+                <p>"Pelayanan luar biasa dan waktu pengerjaan yang cepat! Saya sangat merekomendasikan mereka."</p>
+                <p class="testimonial-author">- John Doe <br>⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="testimonial-slide">
+                <p>"Rasakan layanan terbaik dan waktu penyelesaian yang cepat! Saya dengan sepenuh hati merekomendasikannya."</p>
+                <p class="testimonial-author">- Jane Smith <br>⭐⭐⭐⭐⭐</p>
+            </div>
+            <!-- Add more testimonials -->
+            <div class="testimonial-slider-nav">
+                <button onclick="showSlide(1)">1</button>
+                <button onclick="showSlide(2)">2</button>
+                <!-- Add more buttons if needed -->
+            </div>
+        </section>
+         <div id="about">
+             
+         <section class="about-section">
+             <section class="about-section2">
+        <h1>About Us</h1>
+        <p>Selamat datang di Bengkel Rizky Top Motor, sumber nomor satu Anda untuk segala hal otomotif. Kami berdedikasi untuk memberikan Anda layanan perbaikan dan pemeliharaan kendaraan terbaik, dengan fokus pada kualitas, layanan pelanggan, dan keunikan.</p>
+        </section>
+        
+        <div class="about-content">
+            <div class="about-card">
+                <img src="https://png.pngtree.com/png-clipart/20230916/original/pngtree-cartoon-mechanic-stands-beside-a-car-on-a-sticker-imzalat-vector-png-image_12233189.png" alt="Rizky">
+                <h3>Aldimrizzky</h3>
+                <p>Founder & Chief Mechanic</p>
+                <p>Dengan pengalaman lebih, Rizky bersemangat memberikan layanan terbaik dan memastikan kendaraan Anda berjalan dengan lancar.</p>
+            </div>
+            <div class="about-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_2Gtjtc7XI5S2FxATep4JghXRBxDhYZuXZw0mWpTaHowCDlBlOj3gjDM&s=10" alt="Team Member">
+                <h3>Tim kita</h3>
+                <p>Experienced Mechanics</p>
+                <p>Tim mekanik kami yang terampil berdedikasi untuk memberikan perbaikan dan pemeliharaan berkualitas tinggi untuk menjaga kendaraan Anda dalam kondisi sempurna.</p>
+            </div>
+            <div class="about-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8tSLRwSxJHWwjiLZbtkmA7PHMiGVUVbO8Nw&usqp=CAU" alt="Workshop">
+                <h3>Bengkel kami</h3>
+                <p>State-of-the-Art Facility</p>
+                <p>Dilengkapi dengan peralatan dan teknologi terkini, bengkel kami dirancang untuk menangani segala kebutuhan otomotif Anda secara efisien dan efektif.</p>
+            </div>
+        </div>
+    </section>
+        </div>
+       
+        <br>
+      <section class="services-section">
+        <h2>Our Services</h2>
+        <div class="services-slider">
+            <div class="service-card">
+                <img src="https://png.pngtree.com/png-clipart/20230914/original/pngtree-small-engine-repair-vector-png-image_12155732.png" alt="Engine Repair">
+                <h3>Engine Repair</h3>
+                <p>Mekanik ahli kami memberikan layanan perbaikan mesin yang komprehensif untuk memastikan performa kendaraan Anda optimal.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSKeWr27GTAM1bEuxU4Lfv_ITVZ2OQVmdYVw&usqp=CAU" alt="Brake Service">
+                <h3>Brake Service</h3>
+                <p>Kami menawarkan layanan rem berkualitas tinggi untuk menjaga Anda tetap aman di jalan, termasuk pemeriksaan, perbaikan, dan penggantian rem.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUlhzkUp5g1c10f-vnr8aRjuNm6rYw8SKow7tkNOCsCWfuwiIJYtmcu_Cz&s=10" alt="Oil Change">
+                <h3>Oil Change</h3>
+                <p>Penggantian oli secara teratur sangat penting untuk kesehatan mesin. Percayakan pada kami untuk layanan ganti oli yang cepat dan profesional.</p>
+            </div>
+            <div class="service-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA5XZCpyPgho0mYH53ZNhsaUqhqvA_r-NzdJJsmBPu7it0c-8UlTyGn3lz&s=10" alt="Tire Service">
+                <h3>Tire Service</h3>
+                <p>Kami menyediakan layanan rotasi, penyeimbangan, dan penggantian ban untuk memastikan stabilitas dan keamanan kendaraan Anda.
+</p>
+            </div>
+            <div class="service-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzqd1oIyOiK4HbAqYeySwWTs5mjWsw1HDmAQ&usqp=CAU" alt="Battery Service">
+                <h3>Battery Service</h3>
+                <p>Dari pengujian baterai hingga penggantian, layanan baterai kami akan menjaga kendaraan Anda tetap bertenaga dan siap berangkat.</p>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+<section class="operation-hours">
+    <h2>Jadwal Operasi Kerja</h2>
+    <table>
+        <tr>
+            <th>Hari</th>
+            <th>Jam Operasional</th>
+        </tr>
+        <tr>
+            <td>Senin</td>
+            <td>08:00 - 16:00</td>
+        </tr>
+        <tr>
+            <td>Selasa</td>
+            <td>08:00 - 16:00</td>
+        </tr>
+        <tr>
+            <td>Rabu</td>
+            <td>08:00 - 16:00</td>
+        </tr>
+        <tr>
+            <td>Kamis</td>
+            <td>08:00 - 16:00</td>
+        </tr>
+        <tr>
+            <td>Jumat</td>
+            <td>13:00 - 16:00</td>
+        </tr>
+        <tr>
+            <td>Sabtu</td>
+            <td>08:00 - 16:00</td>
+        </tr>
+        <tr>
+            <td>Minggu</td>
+            <td>08:00 - 16:00</td>
+        </tr>
+    </table>
+</section>
+<h3><i>Isi Formulir dibawah Untuk Melakukan Konsultasi dengan Kami.</i></h3>
+
+
+ <section id="contact1" class="contact1">
+    <div class="contact-form">
+        <h2>Consultation Form</h2>
+        <form id="consultation-form">
+            <label for="name">Nama Pengguna:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="vehicle">Jenis Kendaraan:</label>
+            <input type="text" id="vehicle" name="vehicle" required>
+
+            <label for="consultation">Hal yang ingin Ditanyakan/Masalah yang dialami kendaraan:</label>
+            <textarea id="consultation" name="consultation" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</section>
+
+
+   
+    <br>
+    <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.977639483425!2d109.5268906!3d-7.5774125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e654c84e6cb51c5%3A0x25e8174ab90e059f!2sCGFG%2B2QJ%2C%20Kedungjati%2C%20Kec.%20Sempor%2C%20Kabupaten%20Kebumen%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1721060578922!5m2!1sid!2sid" 
+  width="100%" 
+  height="280" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy">
+</iframe>
+<br>
+<br>
+  
+ <div id="contact">
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <ul>
+                <li><i class="icon fas fa-map-marker-alt"></i> 
+  
+ Kedungjati, Kabupaten Kebumen, Jawa Tengah
+  </a>
+</li>
+               <li><i class="icon fas fa-envelope"></i> Email: aldymrizzky@gmail.com</li>
+                <li><i class="icon fas fa-phone-alt"></i> Phone: +62 821-3677-3864</li>
+            </ul>
+        </section>
+        </div>
+        
+
+    
+        <!-- Scroll Down Animation -->
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </main>
+
+
+
+
+ 
+<footer>
+        <div class="container">
+            <div class="links" style="margin-bottom: 20px;">
+                <a href="#">Home</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About Us</a>
+            </div>
+            <div class="social-icons" style="margin-bottom: 20px;">
+               
+               
+                <a href="https://www.instagram.com/aldimrizzky_?igsh=MWZ2NXNtenloamkz"><i class="fab fa-instagram"></i></a>
+                <p>Instragram</p>
+                
+            </div>
+            <p>&copy; 2024 Bengkel Rizky Top Motor. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    
+    <!-- JavaScript -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    
+    <script>
+        // Add animation when sections are scrolled into view
+        document.addEventListener('DOMContentLoaded', function() {
+            let servicesSection = document.querySelector('.services');
+            let contactSection = document.querySelector('.contact');
+            let scrollDown = document.querySelector('.scroll-down');
+
+            function isInViewport(element) {
+                let rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function checkScroll() {
+                if (isInViewport(servicesSection)) {
+                    servicesSection.classList.add('show');
+                }
+
+                if (isInViewport(contactSection)) {
+                    contactSection.classList.add('show');
+                }
+
+                // Show scroll-down button when not in contact section
+                if (!isInViewport(contactSection)) {
+                    scrollDown.classList.add('show');
+                } else {
+                    scrollDown.classList.remove('show');
+                }
+            }
+
+            window.addEventListener('scroll', checkScroll);
+            window.addEventListener('resize', checkScroll);
+
+            // Initial check when page loads
+            checkScroll();
+
+            // Smooth scroll functionality for scroll-down button
+            scrollDown.addEventListener('click', function() {
+                window.scrollTo({
+                    top: contactSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Testimonial Slider Functionality
+        let currentSlide = 1;
+
+        function showSlide(slideNumber) {
+            // Hide all slides
+            let slides = document.querySelectorAll('.testimonial-slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Show the selected slide
+            let slide = document.querySelector(`.testimonial-slide:nth-child(${slideNumber})`);
+            slide.classList.add('active');
+
+            // Update current slide number
+            currentSlide = slideNumber;
+        }
+        
+        <!-- humberger -->
+        document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const overlay = document.querySelector('.overlay');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        overlay.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    });
+  
+ <!-- loading -->
+ document.addEventListener("DOMContentLoaded", function() {
+    var loader = document.getElementById("loader");
+
+    setTimeout(function() {
+        loader.classList.add("hidden");
+    }, 3000); // Menghilangkan loader setelah 3 detik
+});
+
+<!-- slider -->
+
+ $(document).ready(function(){
+            $('.services-slider').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+        
+        
+        <!-- input -->
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('consultation-form');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const name = document.getElementById('name').value;
+        const vehicle = document.getElementById('vehicle').value;
+        const consultation = document.getElementById('consultation').value;
+
+        // Generate random ID for the order
+        const orderId = generateRandomId(); // You can define this function later
+
+        // Format the message like a receipt or struk
+        const message = `
+*🔧 Rizky Top Motor - Permintaan Konsultasi 🔧*
+
+\`\`\`
+========================
+Order ID: ${orderId}
+------------------------
+Nama: ${name}
+Jenis Kendaraan: ${vehicle}
+------------------------
+Konsultasi:
+${consultation}
+========================
+\`\`\`
+
+Terima kasih telah berkonsultasi dengan kami! 🚗💨
+        `;
+
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(message);
+
+        // WhatsApp API URL
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=6282136773864&text=${encodedMessage}`;
+
+        // Open WhatsApp in a new tab with pre-filled message
+        window.open(whatsappUrl, '_blank');
+
+        // Clear the form fields after submission
+        form.reset();
+    });
+});
+
+function generateRandomId() {
+    // Generate a random 6-digit ID
+    const randomId = Math.floor(100000 + Math.random() * 900000);
+    return randomId;
+}
+
+    </script>
+</body>
+</html>
