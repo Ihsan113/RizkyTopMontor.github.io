@@ -32,6 +32,7 @@
     background-color: #000000;
     padding: 15px 20px;
     display: flex;
+    height: 95px;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -138,17 +139,27 @@ h1 {
     
 }
 
-
-       /* Banner Section */
+/* Banner Section */
 .banner {
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCEk3gY2YMdJEuJGcavhOaMNNk3nOfwQbb_Q&usqp=CAU') no-repeat center center/cover;
-    height: 400px;
+    position: relative;
+    height: 100vh; /* Full height */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     text-align: center;
-    position: relative;
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 .banner::before, .banner::after {
@@ -156,7 +167,7 @@ h1 {
     position: absolute;
     left: 0;
     right: 0;
-    height: 80px; /* Tinggi efek blur */
+    height: 100%; /* Tinggi efek blur */
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Gradien dari hitam ke transparan */
     z-index: 1;
 }
@@ -179,12 +190,37 @@ h1 {
     font-size: 2.0rem;
     font-weight: bold;
     color: #f0a500; /* Warna utama teks */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Jarak antar elemen teks */
     
     /* Efek 3D menggunakan transform */
     transform: perspective(100px) rotateX(5deg) translateY(-65px);
 
     /* Animasi warna menyala */
     animation: glow 2s ease-in-out infinite alternate;
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+}
+
+.banner-text button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #f0a500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.banner-text button:hover {
+    background-color: #ffcc00;
 }
 
 @keyframes glow {
@@ -198,7 +234,47 @@ h1 {
     }
 }
 
-       
+/* Typewriter animation */
+.typewriter-container {
+    margin-top: 60px; /* Jarak dari tombol */
+    max-width: 280px; /* Membuat kontainer selebar mungkin */
+    white-space: normal; /* Membuat teks membungkus */
+    display: inline-block;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.typewriter-text {
+    display: inline-block;
+    border-right: 3px solid;
+    font-size: 1.1rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes upDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.typewriter-container.visible .typewriter-text {
+    animation: typewriter 5s steps(40, end), blink 0.75s step-end infinite;
+}
+
+.typewriter-container.visible {
+    animation: upDown 1.5s ease-in-out infinite;
+}
+
 
         .slogan {
             margin-top: 10px;   
@@ -764,10 +840,21 @@ h1 {
 
 <div class="overlay"></div>
 
-    <div class="banner">
-        <div class="banner-text">Welcome to Bengkel Rizky Top Motor</div>
+<div class="banner">
+        <video autoplay muted loop id="background-video">
+            <source src="img/Banner.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="banner-text">
+            <i>Welcome to Bengkel Rizky Top Motor</i>
+            <p>Your Trusted Workshop for All Vehicle Repairs</p>
+            <button onclick="showText()" id="learn-more-btn">Learn More</button>
+            <div class="typewriter-container" id="typewriter-container">
+                <div class="typewriter-text" id="typewriter-text"></div>
+            </div>
+        </div>
     </div>
-
+    
     <main>
         <div class="slogan">
             <span class="slogan-text"><i>Kami Siap Melayani Anda !!</i></span>
@@ -1197,6 +1284,37 @@ function generateRandomId() {
     const randomId = Math.floor(100000 + Math.random() * 900000);
     return randomId;
 }
+
+
+<!-- animasi banner-->
+let learnMoreClicked = false;
+
+function showText() {
+    if (!learnMoreClicked) {
+        const textContainer = document.getElementById('typewriter-container');
+        const textElement = document.getElementById('typewriter-text');
+        const text = "Terimakasih Telah Berkunjung!";
+
+        textContainer.style.visibility = 'visible';
+        textContainer.classList.add('visible');
+        typeWriter(text, textElement, 0);
+
+        // Menonaktifkan tombol setelah diklik
+        document.getElementById('learn-more-btn').disabled = true;
+
+        learnMoreClicked = true;
+    }
+}
+
+function typeWriter(text, element, index) {
+    if (index < text.length) {
+        element.textContent += text.charAt(index);
+        setTimeout(() => {
+            typeWriter(text, element, index + 1);
+        }, 100);
+    }
+}
+
 
     </script>
 </body>
